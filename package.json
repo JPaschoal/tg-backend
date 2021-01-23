@@ -1,0 +1,20 @@
+{
+  "name": "siga-api",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "API for SIGA+ aplication",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": "git@github.com:JPaschoal/tg-backend.git",
+  "author": "Jhonatan Paschoal",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
