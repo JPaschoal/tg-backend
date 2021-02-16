@@ -1,5 +1,5 @@
 {
-  "name": "siga-api",
+"name": "siga-api",
   "version": "1.0.0",
   "type": "module",
   "description": "API for SIGA+ aplication",
@@ -12,7 +12,9 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
