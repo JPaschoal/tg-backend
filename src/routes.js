@@ -1,18 +1,10 @@
 import { Router } from 'express';
-
-import apiFatec from './services/fatecAPI.js';
+import userController from './controllers/userController.js'
 
 const routes = Router();
 
-routes.get('/', (req, res) => {
-  const myaccount = apiFatec("582728691SP", "30100505")
-  let loginState;
-  myaccount.login().then(loginState = "Logged").catch(loginState = "Fulldeu")
-  res.send(loginState)
-})
+routes.post('/login', userController.login);
 
-routes.get('/test', (req, res) => {
-  res.send('test')
-})
+routes.get('/perfil', userController.perfil);
 
 export default routes;
