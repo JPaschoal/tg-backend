@@ -1,31 +1,29 @@
 import apiFatec from '../services/fatecAPI.js';
 
 let myaccount;
-let access = {
-  login: "",
-  password: ""
-}
-
 
 export default {
   async login(request, response) {
     const {login, password} = request.body
-    myaccount = apiFatec(login, password)
+    myaccount = apiFatec(login, password);
+    console.log(myaccount)
     let status;
     await myaccount.login().then(
       () => {
-        status = myaccount.isLogged() ? "logged" : "notLogged"
+        status = myaccount.isLogged() ? "logged" : "notLogged";
       })
       .catch((err) => {
-        status = myaccount.isDenied() ? "notLogged" : "logged"
+        status = myaccount.isDenied() ? "notLogged" : "logged";
       }) 
-    return response.json({"status": status})
+    return response.json({"status": status});
   },
 
   perfil(request, response) {
-    // myaccount = apiFatec(access.login, access.password)
-    console.log(myaccount)
-    const profile = myaccount.getProfile();
-    return response.json(profile)
+    console.log(myaccount);
+    let profile;
+    myaccount.student.getProfile().then( result => {
+      profile = result
+    })
+    return response.json({"test": "test"});
   }
 }
