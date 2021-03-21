@@ -21,6 +21,9 @@ export default {
 
   async perfil(request, response) {
     let profile;
+    if(!myaccount) {
+      return response.json({status: "notLogged"});
+    }
     await myaccount.getProfile()
     .then( result => {
       profile = result;
@@ -34,6 +37,9 @@ export default {
 
   async schedule(request, response) {
     let schedule;
+    if(!myaccount) {
+      return response.json({status: "notLogged"});
+    }
     await myaccount.getSchedules()
     .then( result => {
       schedule = result;
@@ -47,6 +53,9 @@ export default {
 
   async enrolledDisciplines(request, response) {
     let enrolledDisciplines;
+    if(!myaccount) {
+      return response.json({status: "notLogged"});
+    }
     await myaccount.getEnrolledDisciplines()
     .then( result => {
       enrolledDisciplines = result;
@@ -60,6 +69,9 @@ export default {
 
   async calendar(request, response) {
     let calendar;
+    if(!myaccount) {
+      return response.json({status: "notLogged"});
+    }
     await myaccount.getAcademicCalendar()
     .then( result => {
       calendar = result;
@@ -73,6 +85,9 @@ export default {
 
   async grades(request, response) {
     let grades;
+    if(!myaccount) {
+      return response.json({status: "notLogged"});
+    }
     await myaccount.getPartialGrades()
     .then( result => {
       grades = result;
@@ -82,5 +97,10 @@ export default {
     });
     console.log(grades);
     return response.json(grades);
+  },
+
+  logout(request, response) {
+    myaccount = null;
+    return response.json({status: "true"});
   }
 }

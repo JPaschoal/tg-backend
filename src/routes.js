@@ -15,4 +15,6 @@ routes.get('/calendar', userController.calendar);
 
 routes.get('/grades', userController.grades);
 
+routes.get('/logout', userController.logout)
+
 export default routes;
