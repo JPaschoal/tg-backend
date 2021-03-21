@@ -13,4 +13,6 @@ routes.get('/enrolledDisciplines', userController.enrolledDisciplines);
 
 routes.get('/calendar', userController.calendar);
 
+routes.get('/grades', userController.grades);
+
 export default routes;

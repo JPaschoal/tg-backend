@@ -69,5 +69,18 @@ export default {
     });
     console.log(calendar);
     return response.json(calendar);
+  },
+
+  async grades(request, response) {
+    let grades;
+    await myaccount.getPartialGrades()
+    .then( result => {
+      grades = result;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    console.log(grades);
+    return response.json(grades);
   }
 }
