@@ -14,6 +14,10 @@ This project was developed using the following technologies:
 
 - This is a API for the SIGA+ aplication
 
+# API Usage
+
+[API DOC](/Docs/APIUsage.MD)
+
 # Development
 
 1. **Clone:**

@@ -9,6 +9,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Making initial congiguration and instalations;
-
-- [Installing workbench cli](https://www.youtube.com/watch?v=OUZIaoCSJas)
+- Making initial configuration and instalations;
+- Setup api integrantion and app routes;
+- Connection BD;
