@@ -1,0 +1,24 @@
+{
+  "name": "siga-api",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "API for SIGA+ aplication",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": "git@github.com:JPaschoal/tg-backend.git",
+  "author": "Jhonatan Paschoal",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "fatec-api": "^1.5.0",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "sequelize-cli": "^6.2.0"
+  }
+}
