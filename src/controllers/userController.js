@@ -1,5 +1,4 @@
 import apiFatec from '../services/fatecAPI.js';
-import isLogged from '../utils/isLogged.js';
 
 let myaccount;
 
@@ -7,10 +6,10 @@ export default {
   async login(request, response) {
     const {login, password} = request.body
     myaccount = apiFatec(login, password);
-    await myaccount.login().then(
+    await myaccount.login()
+    .then(
       () => {
         const status = myaccount.isLogged() ? "logged" : "notLogged";
-        console.log(status)
         return response.json({"status": status});
       })
       .catch((err) => {
@@ -24,7 +23,6 @@ export default {
     }
     await myaccount.getProfile()
     .then( profile => {
-      console.log(profile);
       return response.json(profile);
     })
     .catch((err) => {
@@ -38,7 +36,6 @@ export default {
     }
     await myaccount.getSchedules()
     .then( schedule => {
-      console.log(schedule);
       return response.json(schedule);
     })
     .catch((err) =>{
@@ -52,7 +49,6 @@ export default {
     }
     await myaccount.getEnrolledDisciplines()
     .then( enrolledDisciplines => {
-      console.log(enrolledDisciplines);
       return response.json(enrolledDisciplines);
     })
     .catch((err) => {
@@ -66,7 +62,6 @@ export default {
     }
     await myaccount.getAcademicCalendar()
     .then( calendar => {
-      console.log(calendar);
       return response.json(calendar);
     })
     .catch((err) => {
@@ -80,7 +75,6 @@ export default {
     }
     await myaccount.getPartialGrades()
     .then( grades => {
-      console.log(grades);
       return response.json(grades);
     })
     .catch((err) => {
