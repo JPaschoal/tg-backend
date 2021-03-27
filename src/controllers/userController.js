@@ -1,5 +1,4 @@
 import apiFatec from '../services/fatecAPI.js';
-import isLogged from '../utils/isLogged.js';
 
 let myaccount;
 
