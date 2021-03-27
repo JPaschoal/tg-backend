@@ -1,13 +1,11 @@
-const config = {
+module.exports = {
   dialect: 'mysql',
   host: 'localhost',
   username:'root',
-  passowrd:'123Mysql',
-  database: 'esystem',
+  password:'30100505aA@',
+  database: 'sigadatabase',
   define:{
     timestamps:true,
     underscored:true,
   }
 }
-
-export default config;
