@@ -1,5 +1,7 @@
 import {createConnection} from "typeorm";
 
-// createConnection method will automatically read connection options
-// from your ormconfig file or environment variables
-const connection = await createConnection();
+createConnection().catch((err) => {
+    console.error("BD connection fail")
+    console.error(err)
+  })
+

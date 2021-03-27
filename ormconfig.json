@@ -4,5 +4,14 @@
   "port": 3306,
   "username": "root",
   "password": "30100505aA@",
-  "database": "sigadatabase"
+  "database": "sigadatabase",
+  "synchronize": false,
+  "logging": false,
+  "migrationTableName": "migration",
+  "migration": ["./src/database/migrations/*.js"],
+  "entities": ["./src/models/*.js"],
+  "cli": {
+    "entitiesDir": "./src/models",
+    "migrationDir": "./src/database/migrations"
+  }
 }
