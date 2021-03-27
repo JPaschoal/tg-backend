@@ -6,80 +6,71 @@ export default {
   async login(request, response) {
     const {login, password} = request.body
     myaccount = apiFatec(login, password);
-    await myaccount.login()
-    .then(
-      () => {
-        const status = myaccount.isLogged() ? "logged" : "notLogged";
-        return response.json({"status": status});
-      })
-      .catch((err) => {
-        console.error(err);
-      })
+    
+    try {
+      await myaccount.login()
+      const status = myaccount.isLogged()
+      return response.json({ "status": status })
+    }
+    catch (err) {
+      console.error("invalido");
+      console.error(err)
+      return response.json({ "status": "notLogged" })
+    }
     },
 
   async perfil(request, response) {
-    if(!myaccount) {
-      return response.json({status: "notLogged"});
-    }
-    await myaccount.getProfile()
-    .then( profile => {
+    try {
+      const profile = await myaccount.getProfile()
       return response.json(profile);
-    })
-    .catch((err) => {
-      console.error(err);
-    })
+    }
+    catch (err) {
+      console.log(err);
+      return response.json({ "profile": false })
+    }
   },
 
   async schedule(request, response) {
-    if(!myaccount) {
-      return response.json({status: "notLogged"});
+    try {
+      const schedules = await myaccount.getSchedules()
+      return response.json(schedules);
+    } 
+    catch (err) {
+      console.error(err)
+      return response.json({ "schedules": false })
     }
-    await myaccount.getSchedules()
-    .then( schedule => {
-      return response.json(schedule);
-    })
-    .catch((err) =>{
-      console.error(err);
-    })
   },
 
   async enrolledDisciplines(request, response) {
-    if(!myaccount) {
-      return response.json({status: "notLogged"});
-    }
-    await myaccount.getEnrolledDisciplines()
-    .then( enrolledDisciplines => {
+    try {
+      const enrolledDisciplines = await myaccount.getEnrolledDisciplines()
       return response.json(enrolledDisciplines);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+    } 
+    catch (err) {
+      console.error(err)
+      return response.json({ "enrolledDisciplines": false })
+    }
   },
 
   async calendar(request, response) {
-    if(!myaccount) {
-      return response.json({status: "notLogged"});
-    }
-    await myaccount.getAcademicCalendar()
-    .then( calendar => {
+    try {
+      const calendar = await myaccount.getAcademicCalendar()
       return response.json(calendar);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+    } 
+    catch (err) {
+      console.error(err)  
+      return response.json({ "calendar": false })
+    }
   },
 
   async grades(request, response) {
-    if(!myaccount) {
-      return response.json({status: "notLogged"});
+    try {
+      const partialGrades = await myaccount.getPartialGrades()
+      return response.json(partialGrades)
+    } catch (err) {
+      console.error(err)
+      return response.json({ "partialGrades": false })
     }
-    await myaccount.getPartialGrades()
-    .then( grades => {
-      return response.json(grades);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
   },
 
   logout(request, response) {
