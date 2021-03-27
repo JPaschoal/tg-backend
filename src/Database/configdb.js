@@ -1,4 +1,4 @@
-const connection = {
+const config = {
   dialect: 'mysql',
   host: 'localhost',
   username:'root',
@@ -10,4 +10,4 @@ const connection = {
   }
 }
 
-export default connection;
+export default config;
