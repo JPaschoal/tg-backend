@@ -1,0 +1,8 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "30100505aA@",
+  "database": "sigadatabase"
+}
