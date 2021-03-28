@@ -1,6 +1,8 @@
 import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from "typeorm";
 
 import Notebook from './Notebook'
+import Topico from './Topicos'
+import Comment from './Comments'
 
 @Entity('students')
 export default class Student {
@@ -15,4 +17,18 @@ export default class Student {
   })
   @JoinColumn({ name: 'student_ra' })
   notebooks: Notebook[]
+
+  @OneToMany(() => Topico, topico => topico.student, {
+    cascade: ['insert', 'update']
+  })
+  @JoinColumn({ name: 'student_ra' })
+  topicos: Topico[]
+
+
+  @OneToMany(() => Comment, comment => comment.student, {
+    cascade: ['insert', 'update']
+  })
+  @JoinColumn({ name: 'student_ra' })
+  comments: Comment[]
+
 }
