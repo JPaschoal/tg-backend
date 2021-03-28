@@ -9,9 +9,9 @@
   "logging": false,
   "migrationTableName": "migration",
   "migration": ["./src/database/migrations/*.ts"],
-  "entities": ["./src/entitys/*.ts"],
+  "entities": ["./src/models/*.ts"],
   "cli": {
-    "entitiesDir": "./src/entitys",
+    "entitiesDir": "./src/models",
     "migrationDir": "./src/database/migrations"
   }
 }
