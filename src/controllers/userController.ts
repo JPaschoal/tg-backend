@@ -23,9 +23,11 @@ export default {
           const studentRepository = getRepository(Student)
 
           const searchRA = await studentRepository.find({ where: { ra }})
+          // Verify if ra alredy exist on data base
           if(searchRA.length === 0){
             console.log('No result')
             const student = studentRepository.create({ ra, profile_image: 'empty' })
+            // Add ra to data base
             await studentRepository.save(student)
           }
           else {
