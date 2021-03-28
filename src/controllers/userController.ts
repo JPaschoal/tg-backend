@@ -1,15 +1,17 @@
-import apiFatec from '../services/fatecAPI.js';
+import apiFatec from '../services/fatecAPI';
+import { IMyAccount, IProfile, ISchedule, IEnrolledDisciplines, ICalendar, IGrades,  IAccess } from '../typings/fatecApi'
+import {  Request, Response } from 'express'
 
-let myaccount;
+let myaccount: IMyAccount | null;
 
 export default {
-  async login(request, response) {
-    const {login, password} = request.body
+  async login(request: Request, response: Response) {
+    const {login, password}: IAccess = request.body
     myaccount = apiFatec(login, password);
     
     try {
       await myaccount.login()
-      const status = myaccount.isLogged()
+      const status: boolean = myaccount.isLogged()
       return response.json({ "status": status })
     }
     catch (err) {
@@ -19,9 +21,9 @@ export default {
     }
     },
 
-  async perfil(request, response) {
+  async perfil(request: Request, response: Response) {
     try {
-      const profile = await myaccount.getProfile()
+      const profile: IProfile = await myaccount.getProfile()
       return response.json(profile);
     }
     catch (err) {
@@ -30,9 +32,9 @@ export default {
     }
   },
 
-  async schedule(request, response) {
+  async schedule(request: Request, response: Response) {
     try {
-      const schedules = await myaccount.getSchedules()
+      const schedules: ISchedule[] = await myaccount.getSchedules()
       return response.json(schedules);
     } 
     catch (err) {
@@ -41,9 +43,9 @@ export default {
     }
   },
 
-  async enrolledDisciplines(request, response) {
+  async enrolledDisciplines(request: Request, response: Response) {
     try {
-      const enrolledDisciplines = await myaccount.getEnrolledDisciplines()
+      const enrolledDisciplines: IEnrolledDisciplines = await myaccount.getEnrolledDisciplines()
       return response.json(enrolledDisciplines);
     } 
     catch (err) {
@@ -52,9 +54,9 @@ export default {
     }
   },
 
-  async calendar(request, response) {
+  async calendar(request: Request, response: Response) {
     try {
-      const calendar = await myaccount.getAcademicCalendar()
+      const calendar: ICalendar = await myaccount.getAcademicCalendar()
       return response.json(calendar);
     } 
     catch (err) {
@@ -63,9 +65,9 @@ export default {
     }
   },
 
-  async grades(request, response) {
+  async grades(request: Request, response: Response) {
     try {
-      const partialGrades = await myaccount.getPartialGrades()
+      const partialGrades: IGrades[] = await myaccount.getPartialGrades()
       return response.json(partialGrades)
     } catch (err) {
       console.error(err)
@@ -73,7 +75,7 @@ export default {
     }
   },
 
-  logout(request, response) {
+  logout(request: Request, response: Response) {
     myaccount = null;
     return response.json({status: "true"});
   }
