@@ -8,7 +8,8 @@ export class CreateStudent1616899733893 implements MigrationInterface {
             columns: [
                 {
                     name: 'ra',
-                    type: 'varchar'
+                    type: 'varchar',
+                    isPrimary: true
                 },
                 {
                     name: 'profile_image',
