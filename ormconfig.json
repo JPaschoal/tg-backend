@@ -1,0 +1,17 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "30100505aA@",
+  "database": "sigadatabase",
+  "synchronize": false,
+  "logging": false,
+  "migrationTableName": "migration",
+  "migrations": ["./src/Database/migrations/*.ts"],
+  "entities": ["./src/Models/*.ts"],
+  "cli": {
+    "entitiesDir": "./src/Models",
+    "migrationsDir": "./src/Database/migrations"
+  }
+}
