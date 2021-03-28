@@ -1,10 +1,10 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class createNotebooksTable1616942209430 implements MigrationInterface {
+export class createNotesTable1616946821271 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name: 'notebooks',
+            name: 'notes',
             columns: [
                 {
                     name: 'id',
@@ -19,8 +19,8 @@ export class createNotebooksTable1616942209430 implements MigrationInterface {
                     type: 'varchar'
                 },
                 {
-                    name: 'subject',
-                    type: 'varchar'
+                    name: 'text',
+                    type: 'longtext'
                 },
                 {
                     name: 'created_at',
@@ -31,16 +31,16 @@ export class createNotebooksTable1616942209430 implements MigrationInterface {
                     type: 'datetime'
                 },
                 {
-                    name: 'student_ra',
-                    type: 'varchar'
+                    name: 'notebook_id',
+                    type: 'integer'
                 }
             ],
             foreignKeys: [
                 {
-                    name: 'NotebookStudent',
-                    columnNames: ['student_ra'],
-                    referencedTableName: 'students',
-                    referencedColumnNames: ['ra'],
+                    name: 'NotesNotebook',
+                    columnNames: ['notebook_id'],
+                    referencedTableName: 'notebooks',
+                    referencedColumnNames: ['id'],
                     onUpdate: 'CASCADE',
                     onDelete: 'CASCADE'
                 },
@@ -49,7 +49,7 @@ export class createNotebooksTable1616942209430 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('notebooks')
+        await queryRunner.dropTable('notes')
     }
 
 }
