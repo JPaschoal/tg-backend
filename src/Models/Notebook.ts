@@ -1,7 +1,7 @@
-// id nome materia createdat updatedat fk_estudante
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 import Student from './Student'
+import Note from './Notes'
 
 @Entity('notebooks')
 export default class Notebook {
@@ -23,4 +23,10 @@ export default class Notebook {
   @ManyToOne(() => Student, student => student.notebooks)
   @JoinColumn({ name: 'student_ra' })
   student: Student;
+
+  @OneToMany(() => Note, note => note.notebook, {
+    cascade: ['insert', 'update']
+  })
+  @JoinColumn({ name: 'student_ra' })
+  notes: Note[]
 }
