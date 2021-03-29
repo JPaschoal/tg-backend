@@ -51,6 +51,30 @@ export default {
     return response.status(201).json(notebook)
   },
 
+  async update(request: Request, response: Response) {
+
+    const {
+      id,
+      name,
+      subject,
+    } = request.body;
+
+    const notebookRepository = getRepository(Notebook)
+
+    const updated = new Date()
+
+    const data = {
+      id,
+      name,
+      subject,
+      updated_at: updated
+    }
+
+    await notebookRepository.save(data)
+
+    return response.status(200).json({ "status": "success"})
+  },
+
   async delete(request: Request, response: Response) {
 
     const { id } = request.body
@@ -61,6 +85,6 @@ export default {
       return response.json({ "status": "failed" })
     })
 
-    return response.status(202).json({ "status": "success"})
+    return response.status(200).json({ "status": "success"})
   }
 }
