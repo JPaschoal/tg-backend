@@ -22,7 +22,6 @@ export default class NoteFile {
   @Column()
   created_at: Date
 
-  @ManyToOne(() => Note, note => note.noteFiles)
-  @JoinColumn({ name: 'note_id' })
+  @ManyToOne(type => Note, noteFiles => NoteFile, { eager: true })
   note: Note
 }

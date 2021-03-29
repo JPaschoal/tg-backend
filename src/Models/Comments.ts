@@ -1,7 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 import Student from './Student'
-import Topico from './Topicos'
+import Topic from "./Topics";
 
 @Entity('comments')
 export default class Comment {
@@ -17,12 +17,10 @@ export default class Comment {
   @Column()
   sender_at: Date
 
-  @ManyToOne(() => Student, student => student.comments)
-  @JoinColumn({ name: 'student_ra' })
-  student: Student;
+  @ManyToOne(type => Student, comments => Comment , { eager: true })
+  student: Student
 
+  @ManyToOne(type => Topic, comments => Comment, { eager: true })
+  topic: Topic
 
-  @ManyToOne(() => Topico, topico => topico.comments)
-  @JoinColumn({ name: 'topico_id' })
-  topico: Topico;
 }

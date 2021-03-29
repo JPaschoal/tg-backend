@@ -1,7 +1,6 @@
 import { 
   Column, 
   Entity, 
-  JoinColumn, 
   ManyToOne, 
   OneToMany, 
   PrimaryGeneratedColumn 
@@ -27,13 +26,9 @@ export default class Note {
   @Column()
   updated_at: Date
 
-  @ManyToOne(() => Notebook, notebook => notebook.notes)
-  @JoinColumn({ name: 'notebook_id' })
-  notebook: Notebook
+  @ManyToOne(type => Notebook, notes => Note, { eager: true })
+  notebook: Notebook;
 
-  @OneToMany(() => NoteFile, noteFile => noteFile.note, {
-    cascade: ['insert', 'update']
-  })
-  @JoinColumn({ name: 'note_id' })
+  @OneToMany(type => NoteFile, note => Note)
   noteFiles: NoteFile[]
 }

@@ -1,5 +1,7 @@
 import { Router } from 'express';
-import userController from './controllers/userController'
+
+import userController from './controllers/user/userController'
+import notebooksController from './controllers/notebook/notebooksController'
 
 const routes = Router();
 
@@ -17,11 +19,13 @@ routes.get('/grades', userController.grades)
 
 routes.get('/logout', userController.logout)
 
-// routes.get('/notebooks/list', notebooksController.list)
+routes.get('/notebooks/show', notebooksController.show)
 
-// routes.post('/notebooks/create', notebooksController.create)
+routes.get('/notebooks/list', notebooksController.list)
 
-// routes.delete('/notebooks/delete', notebooksController.delete)
+routes.post('/notebooks/create', notebooksController.create)
+
+routes.delete('/notebooks/delete', notebooksController.delete)
 
 // routes.post('/notebooks/update', notebooksController.update)
 
