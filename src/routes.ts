@@ -19,6 +19,8 @@ routes.get('/grades', userController.grades)
 
 routes.get('/logout', userController.logout)
 
+// Notebook
+
 routes.get('/notebooks/show', notebooksController.show)
 
 routes.get('/notebooks/list', notebooksController.list)
@@ -27,7 +29,9 @@ routes.post('/notebooks/create', notebooksController.create)
 
 routes.delete('/notebooks/delete', notebooksController.delete)
 
-// routes.post('/notebooks/update', notebooksController.update)
+routes.put('/notebooks/update', notebooksController.update)
+
+// Notes
 
 // routes.get('/notes/list', notesController.list)
 
