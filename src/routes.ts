@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import userController from './controllers/user/userController'
 import notebooksController from './controllers/notebook/notebooksController'
+import notesController from './controllers/notebook/notesController'
 
 const routes = Router();
 
@@ -33,13 +34,17 @@ routes.put('/notebooks/update', notebooksController.update)
 
 // Notes
 
-// routes.get('/notes/list', notesController.list)
+routes.get('/note/show', notesController.show)
 
-// routes.post('/notes/create', notesController.create)
+routes.get('/notes/list', notesController.list)
 
-// routes.delete('/notes/delete', notesController.delete)
+routes.post('/notes/create', notesController.create)
 
-// routes.post('/notes/update', notesController.update)
+routes.delete('/notes/delete', notesController.delete)
+
+routes.put('/notes/update', notesController.update)
+
+// Notes files 
 
 // routes.get('/notes/files/list' notesController.listFiles)
 
