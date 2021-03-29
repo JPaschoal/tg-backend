@@ -1,9 +1,9 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
-import Topico from './Topicos'
+import Topic from './Topics'
 
-@Entity('file_topicos')
-export default class FileTopicos {
+@Entity('files_topic')
+export default class FileTopic {
   @PrimaryGeneratedColumn('increment')
   id: number
 
@@ -16,7 +16,6 @@ export default class FileTopicos {
   @Column()
   sended_at: Date
 
-  @ManyToOne(() => Topico, topico => topico.topicosFiles)
-  @JoinColumn({ name: 'topico_id' })
-  topico: Topico;
+  @ManyToOne(type => Topic, topic_files => FileTopic, { eager: true })
+  topic: Topic
 }

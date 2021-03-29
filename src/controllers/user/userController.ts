@@ -1,9 +1,9 @@
-import apiFatec from '../services/fatecAPI';
+import apiFatec from '../../services/fatecAPI';
 import {  Request, Response } from 'express'
 import { getRepository } from 'typeorm';
 
-import { IMyAccount, IProfile, ISchedule, IEnrolledDisciplines, ICalendar, IGrades,  IAccess } from '../typings/fatecApi'
-import Student from '../Models/Student'
+import { IMyAccount, IProfile, ISchedule, IEnrolledDisciplines, ICalendar, IGrades,  IAccess } from '../../typings/fatecApi'
+import Student from '../../Models/Student'
 
 let myaccount: IMyAccount | null;
 

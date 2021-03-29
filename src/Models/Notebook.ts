@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 import Student from './Student'
 import Note from './Notes'
@@ -20,13 +20,10 @@ export default class Notebook {
   @Column()
   updated_at: Date
 
-  @ManyToOne(() => Student, student => student.notebooks)
-  @JoinColumn({ name: 'student_ra' })
-  student: Student;
+  @ManyToOne(type => Student, notebooks => Notebook, { eager: true })
+  student: Student
 
-  @OneToMany(() => Note, note => note.notebook, {
-    cascade: ['insert', 'update']
-  })
-  @JoinColumn({ name: 'student_ra' })
-  notes: Note[]
+  @OneToMany(type => Note, notebook => Notebook)
+  notes: Note[];
+
 }

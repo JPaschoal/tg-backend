@@ -1,8 +1,8 @@
-import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 
 import Notebook from './Notebook'
-import Topico from './Topicos'
 import Comment from './Comments'
+import Topic from "./Topics";
 
 @Entity('students')
 export default class Student {
@@ -12,23 +12,13 @@ export default class Student {
   @Column()
   profile_image: string;
 
-  @OneToMany(() => Notebook, notebook => notebook.student, {
-    cascade: ['insert', 'update']
-  })
-  @JoinColumn({ name: 'student_ra' })
+  @OneToMany(type => Notebook, student => Student)
   notebooks: Notebook[]
 
-  @OneToMany(() => Topico, topico => topico.student, {
-    cascade: ['insert', 'update']
-  })
-  @JoinColumn({ name: 'student_ra' })
-  topicos: Topico[]
+  @OneToMany(type => Topic, student => Student)
+  topics: Topic[]
 
-
-  @OneToMany(() => Comment, comment => comment.student, {
-    cascade: ['insert', 'update']
-  })
-  @JoinColumn({ name: 'student_ra' })
+  @OneToMany(type => Comment, student => Student)
   comments: Comment[]
 
 }
