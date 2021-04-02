@@ -1,54 +1,56 @@
 import { Request, Response } from 'express'
 import { getRepository } from 'typeorm'
 
-import Notebook from '../../Models/Notebook'
+import Note from '../../Models/Notes'
 
 export default {
   async show(request: Request, response: Response) {
     
     const { id } = request.body
 
-    const notebookRepository = getRepository(Notebook)
+    const noteRepository = getRepository(Note)
 
-    const notebook = await notebookRepository.find({where: { id }})
+    const note = await noteRepository.find({where: { id }})
 
-    response.json(notebook)
+    response.json(note)
 
   },
   async list(request: Request, response: Response) {
+
+    const { notebook } = request.body
     
-    const notebookRepository = getRepository(Notebook)
+    const noteRepository = getRepository(Note)
 
-    const notebooks = await notebookRepository.find()
+    const notes = await noteRepository.find({where: { notebook }})
 
-    response.json(notebooks)
+    response.json(notes)
 
   },
 
   async create(request: Request, response: Response) {
     const {
       name,
-      subject,
-      student
+      text,
+      notebook
     } = request.body
 
-    const notebookRepository = getRepository(Notebook)
+    const noteRepository = getRepository(Note)
 
     const created_at = new Date()
 
     const data = {
       name,
-      subject,
-      student,
+      text,
+      notebook,
       created_at,
       updated_at: created_at
     }
 
-    const notebook = notebookRepository.create(data)
+    const note = noteRepository.create(data)
 
-    await notebookRepository.save(notebook)
+    await noteRepository.save(note)
 
-    return response.status(201).json(notebook)
+    return response.status(201).json(note)
   },
 
   async update(request: Request, response: Response) {
@@ -56,21 +58,21 @@ export default {
     const {
       id,
       name,
-      subject,
+      text
     } = request.body;
 
-    const notebookRepository = getRepository(Notebook)
+    const noteRepository = getRepository(Note)
 
     const updated = new Date()
 
     const data = {
       id,
       name,
-      subject,
+      text,
       updated_at: updated
     }
 
-    await notebookRepository.save(data)
+    await noteRepository.save(data)
 
     return response.status(200).json({ "status": "success"})
   },
@@ -79,9 +81,9 @@ export default {
 
     const { id } = request.body
 
-    const notebookRepository = getRepository(Notebook)
+    const noteRepository = getRepository(Note)
 
-    await notebookRepository.delete({ id }).catch(err => {
+    await noteRepository.delete({ id }).catch(err => {
       return response.json({ "status": "failed" })
     })
 

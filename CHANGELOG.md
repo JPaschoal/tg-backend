@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.4.0] - 2021-04-02
+
+### Added 
+
+- Added multer for upload files;
+- Added note files routes;
+- Added update notebook route;
+- Added notes routes;
+
 ## [0.3.0] - 2021-03-29
 
 ### Fixed

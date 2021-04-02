@@ -1,7 +1,12 @@
 import { Router } from 'express';
+import multer from 'multer'
 
 import userController from './controllers/user/userController'
 import notebooksController from './controllers/notebook/notebooksController'
+import notesController from './controllers/notebook/notesController'
+import notesFilesController from './controllers/notebook/notesFilesController'
+
+import multerConfig from './config/upload'
 
 const routes = Router();
 
@@ -19,6 +24,8 @@ routes.get('/grades', userController.grades)
 
 routes.get('/logout', userController.logout)
 
+// Notebook
+
 routes.get('/notebooks/show', notebooksController.show)
 
 routes.get('/notebooks/list', notebooksController.list)
@@ -27,20 +34,28 @@ routes.post('/notebooks/create', notebooksController.create)
 
 routes.delete('/notebooks/delete', notebooksController.delete)
 
-// routes.post('/notebooks/update', notebooksController.update)
+routes.put('/notebooks/update', notebooksController.update)
 
-// routes.get('/notes/list', notesController.list)
+// Notes
 
-// routes.post('/notes/create', notesController.create)
+routes.get('/note/show', notesController.show)
 
-// routes.delete('/notes/delete', notesController.delete)
+routes.get('/notes/list', notesController.list)
 
-// routes.post('/notes/update', notesController.update)
+routes.post('/notes/create', notesController.create)
 
-// routes.get('/notes/files/list' notesController.listFiles)
+routes.delete('/notes/delete', notesController.delete)
 
-// routes.post('/notes/files/save' notesController.saveFiles)
+routes.put('/notes/update', notesController.update)
 
-// routes.delete('/notes/files/delete' notesController.deleteFiles)
+// Notes files 
+
+routes.get('/notes/files/list', notesFilesController.list)
+
+routes.post('/notes/files/save', multer(multerConfig).array("files"), notesFilesController.create)
+
+routes.get('/notes/files/show', notesFilesController.show)
+
+routes.delete('/notes/files/delete', notesFilesController.delete)
 
 export default routes;
