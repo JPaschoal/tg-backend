@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added 
 
+- Added multer for upload files;
+- Added note files routes;
 - Added update notebook route;
 - Added notes routes;
 

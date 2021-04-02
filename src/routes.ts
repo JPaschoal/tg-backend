@@ -1,8 +1,12 @@
 import { Router } from 'express';
+import multer from 'multer'
 
 import userController from './controllers/user/userController'
 import notebooksController from './controllers/notebook/notebooksController'
 import notesController from './controllers/notebook/notesController'
+import notesFilesController from './controllers/notebook/notesFilesController'
+
+import multerConfig from './config/upload'
 
 const routes = Router();
 
@@ -46,10 +50,12 @@ routes.put('/notes/update', notesController.update)
 
 // Notes files 
 
-// routes.get('/notes/files/list' notesController.listFiles)
+routes.get('/notes/files/list', notesFilesController.list)
 
-// routes.post('/notes/files/save' notesController.saveFiles)
+routes.post('/notes/files/save', multer(multerConfig).array("files"), notesFilesController.create)
 
-// routes.delete('/notes/files/delete' notesController.deleteFiles)
+routes.get('/notes/files/show', notesFilesController.show)
+
+routes.delete('/notes/files/delete', notesFilesController.delete)
 
 export default routes;
