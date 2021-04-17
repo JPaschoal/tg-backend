@@ -26,9 +26,9 @@ routes.get('/logout', userController.logout)
 
 // Notebook
 
-routes.get('/notebooks/show', notebooksController.show)
+routes.get('/notebooks/show/:id', notebooksController.show)
 
-routes.get('/notebooks/list', notebooksController.list)
+routes.get('/notebooks/list/:student', notebooksController.list)
 
 routes.post('/notebooks/create', notebooksController.create)
 
