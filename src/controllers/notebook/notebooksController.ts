@@ -16,10 +16,12 @@ export default {
 
   },
   async list(request: Request, response: Response) {
+
+    const { student } = request.body
     
     const notebookRepository = getRepository(Notebook)
 
-    const notebooks = await notebookRepository.find()
+    const notebooks = await notebookRepository.find({where: { student }})
 
     response.json(notebooks)
 
@@ -56,7 +58,7 @@ export default {
     const {
       id,
       name,
-      subject,
+      subject
     } = request.body;
 
     const notebookRepository = getRepository(Notebook)
