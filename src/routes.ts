@@ -38,9 +38,9 @@ routes.put('/notebooks/update', notebooksController.update)
 
 // Notes
 
-routes.get('/note/show', notesController.show)
+routes.get('/note/show/:id', notesController.show)
 
-routes.get('/notes/list', notesController.list)
+routes.get('/notes/list/:notebook', notesController.list)
 
 routes.post('/notes/create', notesController.create)
 
@@ -50,11 +50,11 @@ routes.put('/notes/update', notesController.update)
 
 // Notes files 
 
-routes.get('/notes/files/list', notesFilesController.list)
+routes.get('/notes/files/list/:note', notesFilesController.list)
 
 routes.post('/notes/files/save', multer(multerConfig).array("files"), notesFilesController.create)
 
-routes.get('/notes/files/show', notesFilesController.show)
+routes.get('/notes/files/show/:id', notesFilesController.show)
 
 routes.delete('/notes/files/delete', notesFilesController.delete)
 

@@ -6,7 +6,7 @@ import NoteFile from '../../Models/NoteFiles'
 export default {
   async show(request: Request, response: Response) {
     
-    const { id } = request.body
+    const { id } = request.params
 
     const noteFileRepository = getRepository(NoteFile)
 
@@ -17,7 +17,7 @@ export default {
   },
   async list(request: Request, response: Response) {
 
-    const { note } = request.body
+    const { note } = request.params
     
     const noteFileRepository = getRepository(NoteFile)
 
