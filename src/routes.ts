@@ -5,6 +5,8 @@ import userController from './controllers/user/userController'
 import notebooksController from './controllers/notebook/notebooksController'
 import notesController from './controllers/notebook/notesController'
 import notesFilesController from './controllers/notebook/notesFilesController'
+import topicsController from './controllers/forums/topicsController'
+import commentController from './controllers/forums/commentController'
 
 import multerConfig from './config/upload'
 
@@ -57,5 +59,21 @@ routes.post('/notes/files/save', multer(multerConfig).array("files"), notesFiles
 routes.get('/notes/files/show/:id', notesFilesController.show)
 
 routes.delete('/notes/files/delete', notesFilesController.delete)
+
+// Topicos
+
+routes.get('/forums/topics/list/:course/:subject', topicsController.list)
+
+routes.post('/forums/topics/create', topicsController.create)
+
+routes.get('/forums/topics/show/:id', topicsController.show)
+
+routes.delete('/forums/topics/delete', topicsController.delete)
+
+// Coments
+
+routes.get('forums/topic/comments/:topic', commentController.list)
+
+routes.post('forums/topic/comments/create', commentController.create)
 
 export default routes;
