@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Added forums routes;
+
 ## [0.4.1] - 2021-04-17
 
 ### Fixed
