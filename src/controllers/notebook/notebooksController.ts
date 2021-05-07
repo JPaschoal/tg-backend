@@ -6,7 +6,7 @@ import Notebook from '../../Models/Notebook'
 export default {
   async show(request: Request, response: Response) {
     
-    const { id } = request.body
+    const { id } = request.params
 
     const notebookRepository = getRepository(Notebook)
 
@@ -17,7 +17,9 @@ export default {
   },
   async list(request: Request, response: Response) {
 
-    const { student } = request.body
+    const { student } = request.params
+
+    console.log(student)
     
     const notebookRepository = getRepository(Notebook)
 

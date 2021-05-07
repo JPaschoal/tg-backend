@@ -6,7 +6,7 @@ import Note from '../../Models/Notes'
 export default {
   async show(request: Request, response: Response) {
     
-    const { id } = request.body
+    const { id } = request.params
 
     const noteRepository = getRepository(Note)
 
@@ -17,7 +17,7 @@ export default {
   },
   async list(request: Request, response: Response) {
 
-    const { notebook } = request.body
+    const { notebook } = request.params
     
     const noteRepository = getRepository(Note)
 
