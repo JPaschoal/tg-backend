@@ -4,9 +4,11 @@ import { getRepository } from 'typeorm'
 import Comment from '../../Models/Comments'
 
 export default {
-  async list(response: Response, request: Request) {
+  async list(request: Request, response: Response) {
 
     const { topic } = request.params
+
+    console.log(topic)
 
     const commentsRepository = getRepository(Comment)
 
@@ -16,7 +18,7 @@ export default {
 
   },
 
-  async create(response: Response, request: Request) {
+  async create(request: Request, response: Response) {
 
     const {
       name,
