@@ -72,8 +72,8 @@ routes.delete('/forums/topics/delete', topicsController.delete)
 
 // Coments
 
-routes.get('forums/topic/comments/:topic', commentController.list)
+routes.get('/forums/topics/comments/:topic', commentController.list)
 
-routes.post('forums/topic/comments/create', commentController.create)
+routes.post('/forums/topics/comments/create', commentController.create)
 
 export default routes;
